@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="google-site-verification" content="YOUR_SEARCH_CONSOLE_CODE_HERE" /> -->
+    <title>Developer Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 850px; margin: auto; padding: 40px 20px; color: #24292e; background-color: #ffffff; }
+        #content { min-height: 200px; }
+        .loading-fallback { border: 1px solid #e1e4e8; border-radius: 6px; padding: 20px; background-color: #f6f8fa; }
+        .footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eaecef; color: #6a737d; font-size: 0.85em; text-align: center; }
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        a { color: #0366d6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nitin Joshi</h1>
+    </header>
+
+    <main id="content">
+        <div class="loading-fallback">
+            <h3>Current Projects</h3>
+            <p>I am a software developer focused on building high-quality applications. My work involves creating efficient, user-centric tools using modern mobile frameworks.</p>
+            <ul>
+                <li><strong>Mobile Applications:</strong> Built with a focus on performance and clean UI.</li>
+                <li><strong>Open Source:</strong> You can find my source code and contributions on <a href="https://github.com/YOUR_USERNAME">GitHub</a>.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer">
+        © 2026 Nitin Joshi | Bangalore, India
+    </footer>
+
+    <script>
+        // Use the jsDelivr CDN to avoid GitHub's 429 rate limits
+        const rawReadmeUrl = 'https://cdn.jsdelivr.net/gh/Nitin-Joshi/Nitin-Joshi@main/README.md';
+        const contentDiv = document.getElementById('content');
+
+        fetch(rawReadmeUrl)
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
+            .then(text => {
+                // If successful, replace the fallback with the live README
+                contentDiv.innerHTML = marked.parse(text);
+            })
+            .catch(err => {
+                console.warn("Using fail-safe content. Live sync unavailable:", err);
+                // We do nothing else here so the "loading-fallback" remains visible
+            });
+    </script>
+
+</body>
+</html>
